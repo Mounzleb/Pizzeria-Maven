@@ -32,29 +32,62 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<build>
 
+		<finalName> mounzerPizza</finalName>
 		<pluginManagement>
-
 			<plugins>
 
+
+
 				<plugin>
-
 					<artifactId>maven-compiler-plugin</artifactId>
-
 					<configuration>
-
 						<source>${java.version}</source>
-
 						<target>${java.version}</target>
-
 					</configuration>
-
 				</plugin>
 
-			</plugins>
+				<!-- Ici le maven jar permet de dire qu'elle est la classe qui a le main 
+					qui doit s'executer Si on a différentes classes ave chacune un main, celà 
+					ne lui posera pas de probléme vue qu'on lui définit qu'elle est la classe 
+					"principal". ici c'st PizzeriaAdminConsoleApp -->
 
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
 		</pluginManagement>
 
-		<finalName> mounzerPizza</finalName>
+		<!-- Pour le shade il ne peux pas être compris dans le <PluginManagement> 
+			le shade nous permet d'avoir un fichier uber.jar que maven à nommer ici original 
+			mounzerpizza.jar Ce fichier est en faite l'executable de mon application 
+			( un peux comme le .jar avec maven-jar-plugin, sauf que la il contient absolument 
+			tous ce dont on a besoin pour faire tourner l'application. C'est un excecutable 
+			qui n'a pas besoin ni d'ide ni de rien d'autre. On peux le lancé dans la 
+			console de commande et il fonctionne. -->
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 
 	</build>
 
@@ -78,13 +111,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		</dependency>
 
 		<dependency>
-		
+
 			<groupId>com.github.lalyos</groupId>
-			
+
 			<artifactId>jfiglet</artifactId>
-			
+
 			<version>0.0.3</version>
-			
+
 		</dependency>
 
 	</dependencies>
