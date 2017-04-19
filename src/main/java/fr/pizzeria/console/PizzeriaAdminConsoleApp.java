@@ -5,6 +5,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.github.lalyos.jfiglet.FigletFont;
+
 import fr.pizzeria.dao.DaoFactoy;
 import fr.pizzeria.dao.DaoFichierFactory;
 import fr.pizzeria.dao.pizza.IPizzaDao;
@@ -19,7 +21,6 @@ public class PizzeriaAdminConsoleApp {
 
 		Scanner question = new Scanner(System.in);
 		question.useLocale(Locale.US);
-		
 		
 		
 		Menu menu = new Menu();

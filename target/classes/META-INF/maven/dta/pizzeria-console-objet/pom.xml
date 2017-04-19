@@ -12,8 +12,26 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<version>1.0.0</version>
 
+
+	<!-- Ajouter et utiliser des propriétés -->
+
+	<!-- Les propriétés sont des sortes de fonction, ils suffit -->
+	<!-- de les modifier par exemple la version de java dans les propiété -->
+	<!-- et on se retrouve avec des modification de versions partout dans le 
+		code -->
+	<!-- où on fait appel à cette versions -->
+	<properties>
+
+		<java.version>1.8</java.version>
+
+		<junit.version>4.12</junit.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+	</properties>
+
 	<build>
-		<finalName> mounzerPizza</finalName>
+
 		<pluginManagement>
 
 			<plugins>
@@ -26,7 +44,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 						<source>${java.version}</source>
 
-						<target>${java.version>}</target>
+						<target>${java.version}</target>
 
 					</configuration>
 
@@ -36,7 +54,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 		</pluginManagement>
 
-
+		<finalName> mounzerPizza</finalName>
 
 	</build>
 
@@ -59,23 +77,19 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 		</dependency>
 
+		<dependency>
+		
+			<groupId>com.github.lalyos</groupId>
+			
+			<artifactId>jfiglet</artifactId>
+			
+			<version>0.0.3</version>
+			
+		</dependency>
+
 	</dependencies>
 
-	<!-- Ajouter et utiliser des propriétés -->
-	
-	<!--  Les propriétés sont des sortes de fonction, ils suffit  -->
-	<!--  de les modifier par exemple la version de java dans les propiété  -->
-	<!-- et on se retrouve avec des modification de versions partout dans le code  -->
-	<!-- où on fait appel à cette versions  -->
-	<properties>
 
-		<java.version>1.8</java.version>
-
-		<junit.version>4.12</junit.version>
-		
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-	</properties>
 
 
 </project>
